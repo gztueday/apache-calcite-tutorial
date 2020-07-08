@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "defaultSchema": "TEST_CSV",
+  "defaultSchema": "TEST_MEM",
   "schemas": [
     {
       "name": "TEST_CSV",

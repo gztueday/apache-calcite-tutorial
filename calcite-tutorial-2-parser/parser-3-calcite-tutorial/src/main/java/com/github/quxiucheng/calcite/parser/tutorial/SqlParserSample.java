@@ -28,11 +28,15 @@ public class SqlParserSample {
         // 创建解析器
         SqlParser parser = SqlParser.create("", mysqlConfig);
         // Sql语句
-        String sql = "select * from emps where id = 1";
+        String sql = "INSERT INTO tmp_node\n" +
+                "SELECT s1.id1, s1.id2, s2.val1\n" +
+                "FROM source1 as s1 INNER JOIN source2 AS s2\n" +
+                "ON s1.id1 = s2.id1 and s1.id2 = s2.id2 where s1.val1 > 5 and s2.val2 = 3";
         // 解析sql
         SqlNode sqlNode = parser.parseQuery(sql);
         // 还原某个方言的SQL
         System.out.println(sqlNode.toSqlString(OracleSqlDialect.DEFAULT));
+
     }
 
     /**
@@ -50,11 +54,5 @@ public class SqlParserSample {
         // 还原某个方言的SQL
         System.out.println(sqlNode.toSqlString(OracleSqlDialect.DEFAULT));
     }
-
-
-
-
-
-
 
 }
